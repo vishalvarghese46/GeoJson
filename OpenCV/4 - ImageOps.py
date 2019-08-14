@@ -5,5 +5,6 @@ img = cv2.imread(r'E:\Python\OpenCVLearning\OpenCV\images\dude.jpg', 0)
 
 cv2.imshow('Dude', img)
 
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
