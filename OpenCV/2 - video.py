@@ -5,7 +5,7 @@ vidObject = cv2.VideoCapture(0)
 
 while True:
     ret, frame = vidObject.read()
-
+    print(frame)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.imshow('frame', frame)
     cv2.imshow('frame1', gray)
