@@ -38,12 +38,17 @@ class videoStreaming(object):
                     blur = cv2.GaussianBlur(grey_img, (5,5), 0)
                     ret, thresh = cv2.threshold(blur, 60, 255, cv2.THRESH_BINARY_INV)
 
+                    '''
+                    mask = cv2.erode(thresh1, None, iterations=2)
+                    mask = cv2.dilate(mask, None, iterations=2)
+                    '''
+
                     contours, hierarchy = cv2.findContours(thresh.copy(), 1, cv2.CHAIN_APPROX_NONE)
                     if len(contours)>0:
                         c = max(contours, key=cv2.contourArea)
-                        M = cv2.moments(c)
-
-                        cx = int(M['m10']/M['m00'])
+                        M = cv2.moments(c)         #Finding the moments which will return a dictiornary of
+                                                                    #mass of the object, area of the object etc.
+                        cx = int(M['m10']/M['m00'])     #finding the centroids from the moments dictionary cx, cy
                         cy = int(M['m01']/M['m00'])
 
                         cv2.line(image, (cx, 0), (cx, 720), (255, 0, 0), 1)
@@ -54,6 +59,7 @@ class videoStreaming(object):
                     else:
                         print("Can't see shit dawg!")
 
+                    #self.connection.send(bytes("1", "utf-8"))
                     print(cx, cy)
 
                     cv2.imshow('Frame', image)
