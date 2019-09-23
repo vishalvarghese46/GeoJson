@@ -1,3 +1,3 @@
-# GeoJson
+# GPIOZERO-OpenCV Learning!
 
-This is a simple python program to access Google's geocoding API.
+Learning OpenCV and GPIO - Raspberry Pi 
